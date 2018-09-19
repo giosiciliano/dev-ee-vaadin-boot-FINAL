@@ -1,0 +1,62 @@
+package com.gio.ui.students;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.gio.model.entity.Student;
+import com.gio.service.showallstudents.ShowAllStudentsService;
+import com.gio.ui.commons.UniversMainUI;
+import com.vaadin.data.Binder;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.spring.annotation.SpringView;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Grid;
+import com.vaadin.ui.VerticalLayout;
+
+@SpringView(name=RemoveStudentLayoutFactory.NAME, ui=UniversMainUI.class)
+public class RemoveStudentLayoutFactory extends VerticalLayout implements View, Button.ClickListener {
+
+	public static final String NAME = "removestudent";
+	private Grid<Student> removeStudentsTable;
+	private Button removeStudentsButton;
+	private List<Student> students;
+	
+	@Autowired
+	private ShowAllStudentsService showAllStudentsService;
+	
+	private void addLayout() {
+		
+		removeStudentsButton = new Button("Remove");
+		
+		setMargin(true);
+		Binder<Student> container = new Binder<Student>(Student.class);
+		
+		removeStudentsTable = new Grid();
+		
+		
+	}
+	
+	private void loadStudents() {
+		students = showAllStudentsService.getAllStudents();
+	}
+	
+	@Override
+	public void buttonClick(ClickEvent event) {
+		
+		
+	}
+	
+	public void enter(ViewChangeEvent event) {
+		
+		if (removeStudentsTable != null) return;
+		
+		loadStudents();
+		addLayout();
+		
+	}
+
+	
+}

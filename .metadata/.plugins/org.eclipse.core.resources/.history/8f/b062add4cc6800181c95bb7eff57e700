@@ -1,0 +1,26 @@
+package com.gio.model.entity;
+
+public class University {
+	
+	private String universityName;
+	private String universityCountry;
+	private String universityCity;
+	
+	
+	public University() {}
+	
+	/**
+	 * @param universityName
+	 * @param universityCountry
+	 * @param universityCity
+	 */
+	public University(String universityName, String universityCountry, String universityCity) {
+		super();
+		this.universityName = universityName;
+		this.universityCountry = universityCountry;
+		this.universityCity = universityCity;
+	}
+	
+	
+
+}

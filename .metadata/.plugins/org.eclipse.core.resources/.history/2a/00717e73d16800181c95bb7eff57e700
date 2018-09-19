@@ -1,0 +1,76 @@
+package com.gio.ui.universities;
+
+import com.gio.model.entity.University;
+import com.gio.utils.StudentStringUtils;
+import com.gio.utils.UniversityStringUtils;
+import com.vaadin.data.BeanValidationBinder;
+import com.vaadin.data.Binder;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.GridLayout;
+import com.vaadin.ui.TextField;
+import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.themes.ValoTheme;
+
+// BUILDER PATTERN
+
+@org.springframework.stereotype.Component
+public class AddUniversityLayoutFactory {
+
+	private class AddUniversityLayout extends VerticalLayout implements Button.ClickListener {
+
+		private TextField universityName;
+		private TextField universityCountry;
+		private TextField universityCity;
+		private Button saveBtn;
+		private University university;
+		private Binder<University> fieldGroup;
+
+		public AddUniversityLayout init() {
+			universityName = new TextField(UniversityStringUtils.UNIVERSITY_NAME.getString());
+			universityCountry = new TextField(UniversityStringUtils.UNIVERSITY_COUNTRY.getString());
+			universityCity = new TextField(UniversityStringUtils.UNIVERSITY_CITY.getString());
+
+			saveBtn = new Button(StudentStringUtils.SAVE_BUTTON.getString());
+			saveBtn.setStyleName(ValoTheme.BUTTON_FRIENDLY);
+
+			// set null representations -- Vaadin 8 does this automatically(whew)
+
+			return this;
+		}
+
+		public AddUniversityLayout bind() {
+			
+			fieldGroup = new BeanValidationBinder<University>(University.class);
+			university = new University();
+
+			fieldGroup.setBean(university);
+
+			return this;
+		}
+
+		// Returns a component because its a Grid
+		public Component layout() {
+			
+			setWidth("100%");
+			
+			GridLayout grid = new GridLayout(2,4);
+			
+
+			return this;
+		}
+
+		@Override
+		public void buttonClick(ClickEvent event) {
+			// TODO Auto-generated method stub
+
+		}
+
+	}
+
+	public Component createComponent() {
+		return new AddUniversityLayout().init().bind().layout();
+	}
+
+}

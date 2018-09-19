@@ -1,0 +1,16 @@
+package com.gio.ui.universities;
+
+import com.gio.ui.commons.UIComponentBuilder;
+import com.vaadin.ui.Component;
+
+public class StatisticsUniversityLayoutFactory implements UIComponentBuilder {
+
+	private List<University> universities;
+	
+	@Override
+	public Component createComponent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

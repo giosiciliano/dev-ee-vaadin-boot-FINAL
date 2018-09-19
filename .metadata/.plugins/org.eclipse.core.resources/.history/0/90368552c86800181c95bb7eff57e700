@@ -1,0 +1,22 @@
+package com.gio.utils;
+
+public enum NotificationMessages {
+	
+	STUDENT_SAVE_VALIDATION_ERROR_TITLE("ERROR"),
+	STUDENT_SAVE_VALIDATION_ERROR_DESC("Fields must be filled!"),
+	STUDENT_SAVE_VALIDATION_SUCCESS_TITLE("SUCCESS"),
+	STUDENT_SAVE_VALIDATION_SUCCESS_DESC("Student has been saved successfully!"),
+	
+	;
+	
+	private final String string;
+	
+	private NotificationMessages(String string) {
+		this.string = string;
+	}
+	
+	public String getString() {
+		return this.string;
+	}
+
+}

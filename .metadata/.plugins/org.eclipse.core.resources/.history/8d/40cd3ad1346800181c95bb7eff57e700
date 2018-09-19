@@ -1,0 +1,8 @@
+package com.gio.service.showallstudents;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class ShowAllStudentsServiceImpl implements ShowAllStudentsService {
+
+}

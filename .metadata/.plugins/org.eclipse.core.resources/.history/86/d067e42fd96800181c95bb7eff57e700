@@ -1,0 +1,25 @@
+package com.gio.ui.universities;
+
+import java.util.List;
+
+import com.gio.model.entity.University;
+import com.gio.ui.commons.UIComponentBuilder;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.VerticalLayout;
+
+public class ShowUniversitiesLayoutFactory implements UIComponentBuilder {
+	
+	private List<University> universities;
+	private 
+	
+	private class ShowUniversitiesLayout extends VerticalLayout {
+		
+	}
+
+	@Override
+	public Component createComponent() {
+		// TODO Auto-generated method stub
+		return new ShowUniversitiesLayout().load().init().layout();
+	}
+
+}

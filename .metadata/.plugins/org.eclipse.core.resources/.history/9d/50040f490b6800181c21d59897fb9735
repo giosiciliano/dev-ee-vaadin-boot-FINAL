@@ -1,0 +1,16 @@
+package com.gio.service.addstudent;
+
+import com.gio.model.entity.Student;
+
+@Service
+public class AddStudentServiceImpl implements AddStudentService {
+
+	@Override
+	public void saveStudent(Student student) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
+}

@@ -1,0 +1,12 @@
+package com.gio.ui.universities;
+
+import com.gio.ui.commons.UIComponentBuilder;
+import com.vaadin.ui.VerticalLayout;
+
+public class ShowUniversitiesLayoutFactory implements UIComponentBuilder {
+	
+	private class ShowUniversitiesLayout extends VerticalLayout {
+		
+	}
+
+}

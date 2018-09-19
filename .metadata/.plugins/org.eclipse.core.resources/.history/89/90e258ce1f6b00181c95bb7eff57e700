@@ -1,0 +1,14 @@
+package com.gio.service.universitystatistics;
+
+public class UniversityStatisticsServiceImpl implements UniversityStatisticsService {
+
+	@Autowired
+	private UniversityRepository uniRepo;
+	
+	@Override
+	public Integer getNumOfStudentsForUniversity(Integer universityId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

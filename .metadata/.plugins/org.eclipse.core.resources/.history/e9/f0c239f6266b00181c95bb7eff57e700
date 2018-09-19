@@ -1,0 +1,64 @@
+package com.gio.ui.universities;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.gio.model.entity.University;
+import com.gio.service.showalluniversities.ShowAllUniversitiesService;
+import com.gio.service.universitystatistics.UniversityStatisticsService;
+import com.gio.ui.commons.UIComponentBuilder;
+import com.vaadin.shared.ui.ContentMode;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.VerticalLayout;
+
+@org.springframework.stereotype.Component
+public class StatisticsUniversityLayoutFactory implements UIComponentBuilder {
+
+	private List<University> universities;
+	
+	@Autowired
+	private UniversityStatisticsService universityStatService;
+	
+	@Autowired
+	private ShowAllUniversitiesService showAllUniversitiesService;
+	
+	
+	// builder pattern
+	private class StatisticsUniversityLayout extends VerticalLayout {
+		
+		public StatisticsUniversityLayout load() {
+			
+			universities = showAllUniversitiesService.getAllUniversities();
+			
+			return this;
+		}
+		public StatisticsUniversityLayout layout() {
+			
+			setMargin(true);
+			
+			for (University university : universities) {
+				int numOfStudents = universityStatService.getNumOfStudentsForUniversity(university.getId());
+				Label label = new Label("<p><b>" + 
+						university.getUniversityName() + "/<b> - " +
+						numOfStudents + " student(s) </p>",
+						ContentMode.HTML);
+				
+				addComponent(label);
+			}
+						
+			return this;
+		}
+		
+		
+	}
+	
+	@Override
+	public Component createComponent() {
+		return new StatisticsUniversityLayout().load().layout();
+	}
+
+
+
+}

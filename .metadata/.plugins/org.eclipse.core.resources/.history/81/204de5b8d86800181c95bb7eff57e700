@@ -1,0 +1,23 @@
+package com.gio.service.showalluniversities;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.gio.model.entity.University;
+import com.gio.repository.university.UniversityRepository;
+
+@Service
+public class ShowAllUniversitiesServiceImpl implements ShowAllUniversitiesService {
+
+	@Autowired
+	private UniversityRepository universityRepository;
+	
+	@Override
+	public List<University> getAllUniversities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

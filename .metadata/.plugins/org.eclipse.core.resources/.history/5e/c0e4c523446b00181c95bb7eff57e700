@@ -1,0 +1,13 @@
+package com.gio.ui.login;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.stereotype.Component;
+
+@Component
+public class LoginFormFactory {
+
+	@Autowired
+	private DaoAuthenticationProvider daoAuthenticationProvider;
+	
+}

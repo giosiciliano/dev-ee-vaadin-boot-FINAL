@@ -1,0 +1,5 @@
+package com.gio.launcher;
+
+public class SecurityConfig {
+
+}

@@ -1,0 +1,156 @@
+package com.gio.ui.students;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.gio.model.entity.Student;
+import com.gio.service.addstudent.AddStudentService;
+import com.gio.service.addstudent.AddStudentServiceImpl;
+import com.gio.utils.Gender;
+import com.gio.utils.NotificationMessages;
+import com.gio.utils.StudentStringUtils;
+import com.vaadin.data.BeanValidationBinder;
+import com.vaadin.data.Binder;
+import com.vaadin.data.ValidationException;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.ComboBox;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.GridLayout;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.Notification.Type;
+import com.vaadin.ui.TextField;
+import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.themes.ValoTheme;
+
+@org.springframework.stereotype.Component
+public class AddStudentMainLayoutFactory {
+
+	// builder pattern
+	private class AddStudentMainLayout extends VerticalLayout implements Button.ClickListener {
+
+		// form fields
+		private TextField firstName;
+		private TextField lastName;
+		private TextField age;
+		private ComboBox<String> gender;
+		private Button saveBtn;
+		private Button clearBtn;
+
+		// bind UI elements to model objects
+		private Binder<Student> fieldGroup;
+		
+		// Student object
+		private Student student;
+		
+		// Student service for adding student to entity
+		// can autowired bc its a spring Service
+		@Autowired 
+		private AddStudentService addStudentService;
+
+		public AddStudentMainLayout init() {
+			
+			// BeanValidationBinder will use java annotations for validation,
+			// Binder does not.
+			fieldGroup = new BeanValidationBinder<Student>(Student.class);
+			student = new Student();
+
+			firstName = new TextField(StudentStringUtils.FIRST_NAME.getString());
+			lastName = new TextField(StudentStringUtils.LAST_NAME.getString());
+			age = new TextField(StudentStringUtils.AGE.getString());
+			gender = new ComboBox<String>(StudentStringUtils.GENDER.getString());
+
+			saveBtn = new Button(StudentStringUtils.SAVE_BUTTON.getString());
+			clearBtn = new Button(StudentStringUtils.CLEAR_BUTTON.getString());
+
+			saveBtn.setStyleName(ValoTheme.BUTTON_FRIENDLY);
+			clearBtn.setStyleName(ValoTheme.BUTTON_PRIMARY);
+
+			saveBtn.addClickListener(this);
+			clearBtn.addClickListener(this);
+
+			ArrayList<String> genderList = new ArrayList<String>();
+			genderList.add(Gender.FEMALE.getString());
+			genderList.add(Gender.MALE.getString());
+
+			gender.setItems(genderList);
+
+			return this;
+		}
+
+		public AddStudentMainLayout bind() {
+			
+			// fieldGroup.bindInstanceFields(this);
+			// bind fields
+
+			fieldGroup.forField(firstName).bind("firstName");
+			fieldGroup.forField(lastName).bind("lastName");
+			fieldGroup.forField(age).bind("age");
+			fieldGroup.forField(gender).bind("gender");
+			
+			fieldGroup.setBean(student);
+			
+			return this;
+		}
+
+		public Component layout() {
+
+			setMargin(true);
+
+			GridLayout gridLayout = new GridLayout(2, 3);
+			gridLayout.setSizeUndefined();
+			gridLayout.setSpacing(true);
+
+			// First Row
+			gridLayout.addComponent(firstName, 0, 0);
+			gridLayout.addComponent(lastName, 1, 0);
+
+			// Second Row
+			gridLayout.addComponent(age, 0, 1);
+			gridLayout.addComponent(gender, 1, 1);
+
+			// Third Row
+			gridLayout.addComponent(new HorizontalLayout(saveBtn, clearBtn), 0, 2);
+
+			return gridLayout;
+		}
+
+		public void buttonClick(ClickEvent event) {
+			if (event.getSource() == this.saveBtn) {
+				save();
+			} else {
+				clearFields();
+			}
+
+		}
+
+		private void save() {
+			try {
+				fieldGroup.writeBean(student);
+			} catch (ValidationException e) {
+				Notification.show(NotificationMessages.STUDENT_SAVE_VALIDATION_ERROR_TITLE.getString(),
+						NotificationMessages.STUDENT_SAVE_VALIDATION_ERROR_DESC.getString(), Type.ERROR_MESSAGE);
+					
+				return;
+			}
+			System.out.println("Adding student: " + student);
+			addStudentService.saveStudent(student);
+			clearFields();
+		}
+
+		private void clearFields() {
+			firstName.clear();
+			lastName.clear();
+			age.clear();
+			gender.clear();
+		}
+
+	}
+
+	public Component createComponent() {
+		return new AddStudentMainLayout().init().bind().layout();
+	}
+
+}

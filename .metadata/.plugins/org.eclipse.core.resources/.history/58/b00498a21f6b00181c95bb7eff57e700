@@ -1,0 +1,7 @@
+package com.gio.service.universitystatistics;
+
+public class UniversityStatisticsService {
+	
+	public Integer getNumOfStudentsForUniversity(Integer universityId);
+
+}

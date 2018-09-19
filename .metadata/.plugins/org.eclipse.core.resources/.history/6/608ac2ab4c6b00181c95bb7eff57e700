@@ -1,0 +1,13 @@
+package com.gio.ui.login;
+
+import com.vaadin.ui.Component;
+
+@org.springframework.stereotype.Component
+public class SignupFormFactory {
+
+	public Component createComponent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

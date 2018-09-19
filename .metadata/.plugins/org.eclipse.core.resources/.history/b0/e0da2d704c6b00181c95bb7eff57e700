@@ -1,0 +1,15 @@
+package com.gio.ui.login;
+
+import com.vaadin.annotations.Theme;
+import com.vaadin.spring.annotation.SpringUI;
+import com.vaadin.ui.UI;
+
+@SpringUI(path=SignupUI.PATH)
+@Theme("valo")
+public class SignupUI extends UI {
+
+	public static final String PATH = "/signup";
+	
+	
+	
+}

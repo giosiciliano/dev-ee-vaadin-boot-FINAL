@@ -1,0 +1,18 @@
+package com.gio.service.showalluniversities;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.gio.model.entity.University;
+
+@Service
+public class ShowAllUniversitiesServiceImpl implements ShowAllUniversitiesService {
+
+	@Override
+	public List<University> getAllUniversities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

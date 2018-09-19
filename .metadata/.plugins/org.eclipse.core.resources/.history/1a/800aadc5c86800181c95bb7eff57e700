@@ -1,0 +1,5 @@
+package com.gio.service.removestudent;
+
+public class RemoveStudentServiceImpl {
+
+}

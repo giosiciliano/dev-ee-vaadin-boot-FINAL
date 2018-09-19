@@ -1,0 +1,15 @@
+package com.gio.service.showalluniversities;
+
+import java.util.List;
+
+import com.gio.model.entity.University;
+
+public class ShowAllUniversitiesServiceImpl implements ShowAllUniversitiesService {
+
+	@Override
+	public List<University> getAllUniversities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

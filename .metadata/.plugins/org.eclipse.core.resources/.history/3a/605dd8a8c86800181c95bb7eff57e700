@@ -1,0 +1,7 @@
+package com.gio.service.removestudent;
+
+public interface RemoveStudentService {
+	
+	public void removeStudent(Student student);
+
+}

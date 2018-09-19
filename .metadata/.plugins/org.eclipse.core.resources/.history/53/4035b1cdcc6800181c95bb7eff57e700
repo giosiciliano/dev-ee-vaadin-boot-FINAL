@@ -1,0 +1,9 @@
+package com.gio.model.entity;
+
+public class University {
+	
+	private String universityName;
+	private String universityCountry;
+	private String universityCity;
+
+}

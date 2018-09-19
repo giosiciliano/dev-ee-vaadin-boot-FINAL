@@ -1,0 +1,6 @@
+package com.gio.service.showallstudents;
+
+@Service
+public class ShowAllStudentsServiceImpl implements ShowAllStudentsService {
+
+}

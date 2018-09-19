@@ -1,0 +1,27 @@
+package com.gio.service.showallstudents;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.gio.model.entity.Student;
+import com.gio.repository.student.StudentRepository;
+
+@Service
+@Transactional(readOnly=true)
+public class ShowAllStudentsServiceImpl implements ShowAllStudentsService {
+
+	@Autowired
+	private StudentRepository studentRepository;
+	
+	@Override
+	// readOnly method so no need to override Transactional
+	public List<Student> getAllStudents() {
+		return studentRepository.getAllStudents();
+	}
+
+	
+	
+}

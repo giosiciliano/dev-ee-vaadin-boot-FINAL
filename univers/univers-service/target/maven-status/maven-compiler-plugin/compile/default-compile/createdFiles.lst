@@ -1,0 +1,10 @@
+com\gio\service\showallstudents\ShowAllStudentsServiceImpl.class
+com\gio\service\adduniversity\AddUniversityServiceImpl.class
+com\gio\service\showalluniversities\ShowAllUniversitiesServiceImpl.class
+com\gio\service\addstudent\AddStudentService.class
+com\gio\service\removestudent\RemoveStudentServiceImpl.class
+com\gio\service\showallstudents\ShowAllStudentsService.class
+com\gio\service\addstudent\AddStudentServiceImpl.class
+com\gio\service\showalluniversities\ShowAllUniversitiesService.class
+com\gio\service\removestudent\RemoveStudentService.class
+com\gio\service\adduniversity\AddUniversityService.class

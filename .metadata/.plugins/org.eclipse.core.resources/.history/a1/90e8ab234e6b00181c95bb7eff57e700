@@ -1,0 +1,18 @@
+package com.gio.service.security;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.gio.repository.security.UserRepository;
+
+public class RegisterUserServiceImpl implements RegisterUserService {
+
+	@Autowired
+	private UserRepository userRepo;
+	
+	@Override
+	public void save(String username, String password) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

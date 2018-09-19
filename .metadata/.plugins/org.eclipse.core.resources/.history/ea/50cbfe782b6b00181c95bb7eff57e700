@@ -1,0 +1,8 @@
+package com.gio.model.entity;
+
+
+@Entity
+@Table(name="USER")
+public class User {
+
+}

@@ -1,0 +1,69 @@
+package com.gio.model.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="UNIVERSITY")
+public class University {
+	
+	@Id
+	@GeneratedValue
+	@Column(name="id")
+	private Integer id;
+	
+	private String universityName;
+	private String universityCountry;
+	private String universityCity;
+	
+	
+	public University() {}
+	
+	/**
+	 * @param universityName
+	 * @param universityCountry
+	 * @param universityCity
+	 */
+	public University(String universityName, String universityCountry, String universityCity) {
+		super();
+		this.universityName = universityName;
+		this.universityCountry = universityCountry;
+		this.universityCity = universityCity;
+	}
+
+	public String getUniversityName() {
+		return universityName;
+	}
+
+	public void setUniversityName(String universityName) {
+		this.universityName = universityName;
+	}
+
+	public String getUniversityCountry() {
+		return universityCountry;
+	}
+
+	public void setUniversityCountry(String universityCountry) {
+		this.universityCountry = universityCountry;
+	}
+
+	public String getUniversityCity() {
+		return universityCity;
+	}
+
+	public void setUniversityCity(String universityCity) {
+		this.universityCity = universityCity;
+	}
+
+	@Override
+	public String toString() {
+		return "University [universityName=" + universityName + ", universityCountry=" + universityCountry
+				+ ", universityCity=" + universityCity + "]";
+	}
+	
+	
+
+}

@@ -1,0 +1,9 @@
+package com.gio.repository.student;
+
+import org.springframework.stereotype.Repository;
+
+// repo is a component that will be injected into the springs IoC container
+@Repository
+public interface UniversityRepository {
+
+}

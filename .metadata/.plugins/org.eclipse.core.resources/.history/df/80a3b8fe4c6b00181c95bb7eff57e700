@@ -1,0 +1,29 @@
+package com.gio.ui.login;
+
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.Panel;
+import com.vaadin.ui.PasswordField;
+import com.vaadin.ui.TextField;
+import com.vaadin.ui.VerticalLayout;
+
+@org.springframework.stereotype.Component
+public class SignupFormFactory {
+
+	private class SignupForm {
+		
+		private VerticalLayout root;
+		private Panel panel;
+		private TextField username;
+		private PasswordField password;
+		private PasswordField passwordVerify;
+		private Button saveBtn;
+		
+	}
+	
+	public Component createComponent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

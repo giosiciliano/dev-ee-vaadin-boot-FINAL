@@ -1,0 +1,5 @@
+package com.gio.ui.universities;
+
+public interface UniversitySavedListener {
+
+}

@@ -1,0 +1,6 @@
+
+public interface AddStudentService {
+	
+	public void saveStudent(Student student);
+
+}

@@ -1,0 +1,10 @@
+package com.gio.service.universitystatistics;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public interface UniversityStatisticsService {
+	
+	public Integer getNumOfStudentsForUniversity(Integer universityId);
+
+}

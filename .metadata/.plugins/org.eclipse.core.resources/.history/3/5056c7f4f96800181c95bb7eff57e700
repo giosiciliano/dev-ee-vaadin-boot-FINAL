@@ -1,0 +1,108 @@
+package com.gio.model.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+@Entity
+@Table(name="STUDENT")
+public class Student {
+
+	@Id
+	@GeneratedValue
+	@Column(name="id")
+	private Integer id;
+	
+	@NotNull(message="Have to specify first name")
+	@Size(min=1)
+	@Column(name="first_name")
+	private String firstName;
+	
+	@NotNull(message="Have to specify last name")
+	@Size(min=1)
+	@Column(name="last_name")
+	private String lastName;
+	
+	@NotNull(message="Have to specify age")
+	@Min(value=0, message="Min age is 0")
+	@Max(value=100, message="Max age is 100")
+	@Column
+	private String age;
+	
+	@NotNull(message="Have to specify gender")
+	@Column
+	private String gender;
+	
+	// Lazy won't load all University's like Eager
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="university_id")
+	@NotNull(message="University must onot be null")
+	private University university;
+
+	public Student() {
+	}
+
+	public Student(String firstName, String lastName, String age, String gender) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+		this.gender = gender;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getAge() {
+		return age;
+	}
+
+	public void setAge(String age) {
+		this.age = age;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
+				+ ", gender=" + gender + "]";
+	}
+
+}

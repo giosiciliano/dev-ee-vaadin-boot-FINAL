@@ -1,0 +1,5 @@
+package com.gio.service.security;
+
+public class UserServiceImpl {
+
+}

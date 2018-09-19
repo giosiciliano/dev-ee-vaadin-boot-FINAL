@@ -1,0 +1,27 @@
+package com.gio.utils;
+
+public enum UniversityStringUtils {
+	
+	MAIN_MENU("MAIN MENU"),
+	SHOW_ALL_STUDENTS("SHOW ALL STUDENTS"),
+	FIRST_NAME("First Name"),
+	LAST_NAME("Last Name"),
+	GENDER("Gender"),
+	AGE("Age"),
+	SAVE_BUTTON("Save"),
+	CLEAR_BUTTON("Clear"),
+	
+	;
+	
+	private final String string;
+	
+	private UniversityStringUtils(String string) {
+		this.string = string;
+	}
+	
+	public String getString() {
+		return this.string;
+	}
+
+
+}

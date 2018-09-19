@@ -1,0 +1,10 @@
+package com.gio.repository.university;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+// repo is a component that will be injected into the springs IoC container
+@Repository
+public interface UniversityRepository extends JpaRepository<Univerisyt, Integer> {
+
+}

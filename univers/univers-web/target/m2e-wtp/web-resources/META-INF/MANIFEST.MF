@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: univers-web
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: siciliag
+Implementation-Vendor-Id: org.springframework.boot
+Build-Jdk: 1.8.0_172
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/univers-web
+Created-By: Maven Integration for Eclipse
+Main-Class: com.gio.launcher.SpringBootApplication
+

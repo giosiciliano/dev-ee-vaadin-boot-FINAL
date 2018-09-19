@@ -1,0 +1,11 @@
+package com.gio.ui.login;
+
+import com.vaadin.spring.annotation.SpringUI;
+import com.vaadin.ui.UI;
+
+@SpringUI(path=LoginUI.PATH)
+public class LoginUI extends UI{
+
+	public static final String PATH = "/login";
+	
+}

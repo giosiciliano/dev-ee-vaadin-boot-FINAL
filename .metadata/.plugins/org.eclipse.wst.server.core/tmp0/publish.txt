@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Wed May 30 14:11:53 EDT 2018
+org.eclipse.jst.j2ee.server\:univers-ui=WEB-INF/lib/univers-ui-0.0.1-SNAPSHOT.jar
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\siciliag\\.m2\\repository\\org\\springframework\\spring-web\\5.0.6.RELEASE\\spring-web-5.0.6.RELEASE.jar=WEB-INF/lib/spring-web-5.0.6.RELEASE.jar

@@ -1,0 +1,5 @@
+package com.gio.service.showalluniversities;
+
+public class ShowAllUniversitiesImpl implements ShowAllUniversitiesService {
+
+}

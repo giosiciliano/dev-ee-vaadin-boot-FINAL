@@ -1,0 +1,5 @@
+package com.gio.repository.security;
+
+public class UserRepository {
+
+}

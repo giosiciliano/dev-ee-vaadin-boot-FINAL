@@ -1,0 +1,10 @@
+package com.gio.repository.student;
+
+import org.springframework.stereotype.Repository;
+
+import com.gio.model.entity.Student;
+
+@Repository
+public interface StudentRepository extends JpaRepository<Student, Integer>{
+
+}

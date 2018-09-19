@@ -1,0 +1,23 @@
+package com.gio.ui.universities;
+
+import java.util.List;
+
+import com.gio.model.entity.University;
+import com.gio.service.showalluniversities.ShowAllUniversitiesService;
+import com.gio.ui.commons.UIComponentBuilder;
+import com.vaadin.ui.Component;
+
+public class StatisticsUniversityLayoutFactory implements UIComponentBuilder {
+
+	private List<University> universities;
+	
+	@Autowired
+	private ShowAllUniversitiesService showAllUniversitiesService;
+	
+	@Override
+	public Component createComponent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

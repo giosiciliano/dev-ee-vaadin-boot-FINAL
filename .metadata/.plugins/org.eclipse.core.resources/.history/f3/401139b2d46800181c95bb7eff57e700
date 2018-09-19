@@ -1,0 +1,24 @@
+package com.gio.service.adduniversity;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.gio.model.entity.University;
+import com.gio.repository.university.UniversityRepository;
+
+
+// component injected for autowiring
+@Service
+public class AddUniversityServiceImpl implements AddUniversityService {
+
+	@Autowired
+	private UniversityRepository universityRepository;
+	
+	@Override
+	public void addUniversity(University universityDAO) {
+		 // pass in the DAO
+		University university = new University();
+		
+	}
+
+}

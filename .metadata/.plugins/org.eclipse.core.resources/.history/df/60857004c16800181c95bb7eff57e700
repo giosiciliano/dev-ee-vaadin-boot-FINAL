@@ -1,0 +1,70 @@
+package com.gio.ui.students;
+
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.gio.model.entity.Student;
+import com.gio.service.showallstudents.ShowAllStudentsService;
+import com.gio.ui.commons.UIComponentBuilder;
+import com.vaadin.data.provider.DataProvider;
+import com.vaadin.data.provider.ListDataProvider;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.Grid;
+import com.vaadin.ui.VerticalLayout;
+
+@org.springframework.stereotype.Component
+public class ShowAllStudentsLayoutFactory implements UIComponentBuilder {
+
+	private List<Student> students;
+	private ListDataProvider<Student> container;
+	
+	private Grid<Student> studentsTable;
+	
+	private class ShowAllStudentsLayout extends VerticalLayout {
+		
+		
+		public ShowAllStudentsLayout init() {
+			
+			setMargin(true);
+
+			// create and set the grid 
+			studentsTable = new Grid<>();
+			studentsTable.setItems(students);
+						
+			// add only the columns you would like to see
+			studentsTable.addColumn(Student::getFirstName).setCaption("First Name");
+			studentsTable.addColumn(Student::getLastName).setCaption("Last Name");
+			studentsTable.addColumn(Student::getAge).setCaption("Age");
+			studentsTable.addColumn(Student::getGender).setCaption("Gender");
+			
+			return this;
+		}
+		
+		public ShowAllStudentsLayout load() {
+			students = showAllStudentsService.getAllStudents();
+			return this;
+		}
+		
+		public ShowAllStudentsLayout layout() {
+			addComponent(studentsTable);
+			return this;
+		}
+	}
+	
+	@Autowired
+	private ShowAllStudentsService showAllStudentsService;
+	
+	public Component createComponent() {
+		return new ShowAllStudentsLayout().load().init().layout();
+	}
+
+	public void refreshTable() {
+		students = showAllStudentsService.getAllStudents();
+		studentsTable.
+		
+	}
+	
+}

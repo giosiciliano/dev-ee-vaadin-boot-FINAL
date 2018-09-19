@@ -1,0 +1,5 @@
+package com.gio.repository.student;
+
+public class StudentRepository {
+
+}

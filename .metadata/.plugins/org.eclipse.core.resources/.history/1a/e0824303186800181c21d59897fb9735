@@ -1,0 +1,11 @@
+package com.gio.service.addstudent;
+import org.springframework.stereotype.Service;
+
+import com.gio.model.entity.Student;
+
+@Service
+public interface AddStudentService {
+	
+	public void saveStudent(Student student);
+
+}

@@ -1,0 +1,95 @@
+package com.gio.ui.commons;
+
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import com.gio.navigator.UniversNavigator;
+import com.gio.utils.StringUtils;
+import com.vaadin.data.HasValue;
+import com.vaadin.data.HasValue.ValueChangeEvent;
+import com.vaadin.data.TreeData;
+import com.vaadin.data.provider.DataChangeEvent;
+import com.vaadin.data.provider.DataProviderListener;
+import com.vaadin.data.provider.TreeDataProvider;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.Tree;
+import com.vaadin.ui.Tree.ItemClick;
+import com.vaadin.ui.Tree.ItemClickListener;
+import com.vaadin.ui.UI;
+import com.vaadin.ui.VerticalLayout;
+
+@org.springframework.stereotype.Component
+public class UniversMenuFactory implements UIComponentBuilder {
+	
+	private class UniversMenu extends VerticalLayout implements ItemClickListener  {
+		
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		private Tree mainTree;
+		private TreeData mainData;
+		private TreeDataProvider mainDataProvider;
+		
+		public UniversMenu init() {
+			
+			mainTree = new Tree();
+			mainData = new TreeData();
+			mainTree.addItemClickListener(this);
+
+			return this;
+		}
+		
+		public UniversMenu layout() {
+			
+			setWidth("100%");
+			setHeightUndefined();
+			
+			// Parents
+			mainData.addItem(null, StringUtils.MENU_STUDENT.getString());
+			mainData.addItem(null, StringUtils.MENU_UNIVERSITY.getString());
+			mainData.addItem(null, "LOGOUT");
+			
+			// Children
+			mainData.addItem(StringUtils.MENU_STUDENT.getString(), StringUtils.MENU_ADD_STUDENT.getString());
+			mainData.addItem(StringUtils.MENU_STUDENT.getString(), StringUtils.MENU_REMOVE_STUDENT.getString());
+			mainData.addItem(StringUtils.MENU_UNIVERSITY.getString(), StringUtils.MENU_OPERATIONS.getString());
+			mainData.addItem("LOGOUT", "Logout");
+			
+			mainDataProvider = new TreeDataProvider(mainData);
+			mainTree.setDataProvider(mainDataProvider);
+			
+			mainTree.expand(StringUtils.MENU_STUDENT.getString());
+			mainTree.expand(StringUtils.MENU_UNIVERSITY.getString());
+			mainTree.expand("LOGOUT");
+			
+			addComponent(mainTree);
+			
+			return this;
+		}
+
+		public void itemClick(ItemClick event) {
+			String selectedItemPath = (String) event.getItem().toString();
+			
+			if (selectedItemPath == null) return;
+			
+			// this will forget current user
+			if (selectedItemPath.equals("Logout")) {
+				SecurityContextHolder.clearContext();
+				UI.getCurrent().getPage().setLocation("/login");
+			}
+			
+			// lowercase and remove all white space
+			String path = selectedItemPath.toLowerCase().replaceAll("\\s+", "");
+			
+			UniversNavigator.navigate(path);
+		}
+
+		
+	}
+
+	public Component createComponent() {
+		return new UniversMenu().init().layout();
+	}
+
+	
+}
